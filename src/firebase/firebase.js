@@ -13,8 +13,25 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 const database = firebase.firestore();
 const auth = firebase.auth();
 
-export { database, auth };
+export const startLogin = async () => {
+  try {
+    return auth.signInWithPopup(googleAuthProvider);
+  } catch (error) {
+    console.log('Login failed: ', error.message);
+  }
+}
+
+export const startLogout = async () => {
+  try {
+    return auth.signOut();
+  } catch (error) {
+
+  }
+}
+
+export { googleAuthProvider, database, auth };
