@@ -5,7 +5,7 @@ const authSlice = createSlice({
   initialState: {},
   reducers: {
     logIn: (state, action) => { state.uid = action.payload },
-    logOut: (state, action) => { state = {} }
+    logOut: (state, action) => state = {}
   },
 });
 

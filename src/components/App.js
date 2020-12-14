@@ -9,6 +9,7 @@ const App = () => {
 
   const handleLogOut = () => {
     startLogout();
+    dispatch(logOut());
     history.push('/majesty-of-darkness/login')
   }
 
