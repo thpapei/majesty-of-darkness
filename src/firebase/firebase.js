@@ -30,7 +30,7 @@ export const startLogout = async () => {
   try {
     return auth.signOut();
   } catch (error) {
-
+    console.log('Logout failed: ', error.message);
   }
 }
 

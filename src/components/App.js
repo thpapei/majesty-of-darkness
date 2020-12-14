@@ -1,25 +1,21 @@
-import React, { useEffect } from 'react';
-import LoginPage from './LoginPage';
-import { auth } from './../firebase/firebase';
-import { useDispatch } from 'react-redux';
-import { logIn, logOut } from '../state/slices/authSlice';
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { startLogout } from "../firebase/firebase";
+import { logOut } from "../state/slices/authSlice";
 
 const App = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        dispatch(logIn(user.uid))
-      } else {
-        dispatch(logOut());
-      }
-    });
-  })
+  const handleLogOut = () => {
+    startLogout();
+    history.push('/majesty-of-darkness/login')
+  }
+
   return (
     <div className="App">
       <h1>App</h1>
-      <LoginPage />
+      <button onClick={handleLogOut}>Logout</button>
     </div>
   );
 }
