@@ -3,7 +3,7 @@ import authReducer from './slices/authSlice';
 
 const store = configureStore({
   reducer: {
-    game: authReducer
+    auth: authReducer
   }
 })
 
